@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.example.lab_5.model.login;
+import com.example.lab_5.model.register;
 import com.example.lab_5.params.params;
 
 public class MyDbHandler extends SQLiteOpenHelper {
@@ -28,14 +29,14 @@ public class MyDbHandler extends SQLiteOpenHelper {
 
     }
 
-    public boolean addUser(login l)
+    public boolean addUser(register r)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        values.put("user", l.getUsername());
-        values.put("pass",l.getPassword());
-        Log.v("SomeTag" , l.getPassword());
+        values.put("user", r.getUsername());
+        values.put("pass",r.getPassword());
+        Log.v("SomeTag" , r.getPassword());
 
         long result = db.insert("loginTB", null, values);
         if(result == -1)

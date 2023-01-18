@@ -10,12 +10,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.lab_5.data.MyDbHandler;
-import com.example.lab_5.model.login;
+import com.example.lab_5.model.register;
+import com.example.lab_5.model.register;
 import com.example.lab_5.params.params;
 
 public class MainActivity extends AppCompatActivity {
     EditText username,password;
-    Button login;
+    Button register;
     String usertext,passtext;
 
     @Override
@@ -24,22 +25,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        login = findViewById(R.id.login);
+        register = findViewById(R.id.register);
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
 
-        login.setOnClickListener(new View.OnClickListener() {
+        register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 usertext = username.getText().toString();
                 passtext = password.getText().toString();
 
-                login lgn = new login();
-                lgn.setUsername(usertext);
-                lgn.setPassword(passtext);
+
+                register reg = new register();
+                reg.setUsername(usertext);
+                reg.setPassword(passtext);
 
                 MyDbHandler db = new MyDbHandler(MainActivity.this);
-                boolean result = db.addUser(lgn);
+                boolean result = db.addUser(reg);
 
                 if(result)
                 {
